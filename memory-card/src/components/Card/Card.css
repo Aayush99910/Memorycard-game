@@ -1,7 +1,6 @@
 .card-container {
     height: 200px;
     width: 200px;
-    border: 1px solid white;
     font-family: 'Exo 2', sans-serif;
     border-radius: 5px;
     transition: 0.30s;
