@@ -5,37 +5,165 @@ import Card from "./components/Card/Card.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 
+// images
+import Crocodile from "./assets/Crocodile.png";
+import Franky from "./assets/Franky.png";
+import Kaido from "./assets/Kaido.png";
+import Law from "./assets/Law.png";
+import Nami from "./assets/Nami.png";
+import Buggy from "./assets/Buggy.png";
+import Blackbeard from "./assets/Blackbeard.png";
+import Arlong from "./assets/Arlong.png";
+import Kid from "./assets/Kid.png";
+import Caesar from "./assets/Caesar.png";
+import Sabo from "./assets/Sabo.png";
+import Kiemon from "./assets/Kiemon.png";
+import BigMom from "./assets/BigMom.png";
+import Ace from "./assets/Ace.png";
+import Shanks from "./assets/Shanks.png";
+import Jimbei from "./assets/Jimbei.png";
+import WhiteBeard from "./assets/WhiteBeard.png";
+import Garp from "./assets/garp.png";
+import Dadan from "./assets/Dadan.png";
+import Smoker from "./assets/Smoker.png";
+
+
 export default function App() {
   const cards = [
     {
         id: 0,
-        imageURL: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        text: "Bear",
+        imageURL: "https://freepngimg.com/thumb/one_piece/90550-monkey-nami-top-character-fictional-nico-luffy.png",
+        text: "Robin",
     },
     {
         id: 1,
-        imageURL: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        text: "Car",
+        imageURL: "https://freepngimg.com/thumb/one_piece/23213-7-one-piece-zoro-photos.png",
+        text: "Zoro",
     },
     {
         id: 2,
-        imageURL: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-        text: "Paris",
-    },
-    {
-        id: 3,
-        imageURL: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=983&q=80",
-        text: "Cars",
+        imageURL: "https://freepngimg.com/thumb/one_piece/23092-1-one-piece-sanji-clipart.png",
+        text: "Sanji",
     },
     {
         id: 4,
-        imageURL: "https://images.unsplash.com/photo-1559912147-f62c767ec0e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80",
-        text: "Cliff",
+        imageURL: "https://freepngimg.com/thumb/one_piece/86562-usopp-warriors-one-joint-costume-piece-pirate.png",
+        text: "Ussop",
     },
     {
-        id: 5,
-        imageURL: "https://images.unsplash.com/photo-1675236272377-aeadff0db186?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-        text: "Dog",
+      id: 6,
+      imageURL: "https://freepngimg.com/thumb/one_piece/23231-5-one-piece-chibi-image.png",
+      text: "Luffy"
+    },
+    {
+      id: 7,
+      imageURL: "https://freepngimg.com/thumb/one_piece/23369-9-one-piece-chibi-transparent-background.png",
+      text: "Chopper"
+    },
+    {
+      id: 8,
+      imageURL: "https://freepngimg.com/thumb/one_piece/87811-monkey-usopp-character-brook-fictional-costume-luffy.png",
+      text: "Brook"
+    },
+    {
+      id: 10,
+      imageURL: Franky,
+      text: "Franky"
+    },
+    {
+      id: 11,
+      imageURL: Kaido,
+      text: "Kaido"
+    },
+    {
+      id: 123,
+      imageURL: Crocodile,
+      text: "Crocodile"
+    },
+    {
+      id: 324,
+      imageURL: Law,
+      text: "Law"
+    },
+    {
+      id: 2356,
+      imageURL: Nami,
+      text: "Nami"
+    },
+    {
+      id: 234546,
+      imageURL: Buggy,
+      text: "Buggy"
+    },
+    {
+      id: 43543,
+      imageURL: Arlong,
+      text: "Arlong"
+    },
+    {
+      id: 145214,
+      imageURL: Blackbeard,
+      text: "Blackbeard"
+    },
+    {
+      id: 69,
+      imageURL: Kid,
+      text: "Kid"
+    },
+    {
+      id: 87,
+      imageURL: Sabo,
+      text: "Sabo"
+    },
+    {
+      id: 65498,
+      imageURL: Caesar,
+      text: "Caesar"
+    },
+    {
+      id: 99,
+      imageURL: Kiemon,
+      text: "Kiemon"
+    },
+    {
+      id: 100,
+      imageURL: Ace,
+      text: "Ace"
+    },
+    {
+      id: 300,
+      imageURL: BigMom,
+      text: "Big Mom"
+    },
+    {
+      id: 500,
+      imageURL: Shanks,
+      text: "Shanks"
+    },
+    {
+      id: 897,
+      imageURL: Jimbei,
+      text: "Jimbei"
+    },
+    {
+      id: 249,
+      imageURL: WhiteBeard,
+      text: "White Beard"
+    },
+    {
+      id: 666,
+      imageURL: Garp,
+      text: "Garp"
+    },
+    {
+      id: 10000,
+      imageURL: Dadan,
+      text: "Dadan"
+    },
+    {
+      id: 25316,
+      imageURL: Smoker,
+      text: "Smoker"
     }
   ];
 
