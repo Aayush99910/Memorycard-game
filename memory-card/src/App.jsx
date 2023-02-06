@@ -49,8 +49,10 @@ export default function App() {
     <div>
       <Header />
       <Message />
-      <div className="small-card-container">
-        {CardsElement}
+      <div className="big-card-container">
+        <div className="small-card-container">
+          {CardsElement}
+        </div>
       </div>
       <Footer />
     </div>
