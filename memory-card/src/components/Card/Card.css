@@ -1,5 +1,5 @@
 .card-container {
-    height: 200px;
+    height: 250px;
     width: 200px;
     font-family: 'Exo 2', sans-serif;
     border-radius: 5px;
@@ -7,11 +7,11 @@
 }
 
 .card-container:hover {
-    box-shadow: 2px 2px rgb(255, 255, 255, 0.7), -2px -2px rgb(255, 255, 255, 0.7);
+    box-shadow: 2px 2px rgba(48, 47, 47, 0.7), -2px -2px rgba(59, 59, 59, 0.7);
 }
 
 .image-container {
-    height: 180px;
+    height: 230px;
     width: 100%;
 }
 
@@ -21,6 +21,7 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     cursor: pointer;
+    object-fit: contain;
 }
 
 .text-container {
