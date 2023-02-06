@@ -9,7 +9,7 @@ export default function Card(props) {
             <div className="image-container">
                 <img src={props.data.imageURL} />
             </div>
-            <div>
+            <div className="text-container">
                 <p>{props.data.text}</p>
             </div>
         </div>

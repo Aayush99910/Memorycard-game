@@ -6,13 +6,15 @@
 }
 
 .title-container{
-    font-size: 30px;
+    font-size: 40px;
     display: flex;
+    font-family: "Open Sans", sans-serif;
     align-items: center;
 }
 
 .score-container {
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
     align-items: center;
 }
