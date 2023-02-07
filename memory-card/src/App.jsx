@@ -206,6 +206,7 @@ export default function App() {
       if (eachClickedCard.id == id) {
         setClickedCardsArray([]);
         setGameOver(true);
+        setMessage("You lost.");
       }
     })
 
@@ -230,6 +231,8 @@ export default function App() {
   const changeGameOver = () => {
     setGameOver(false);
     setScore(0);
+    setClickedCardsArray([]);
+    setMessage("Don't click the same picture twice.");
   }
 
   // cardElement
@@ -250,11 +253,17 @@ export default function App() {
     <div>
       <Header score={score} />
       <Message message={message} gameOver={gameOver} changeGameOver={changeGameOver}/>
-      <div className="big-card-container">
-        <div className="small-card-container">
-          {CardsElement}
+      {
+        gameOver ? 
+        <div className="restart-container">
+          <button className="reset-button" onClick={changeGameOver}>Restart game</button> 
+        </div> : 
+        <div className="big-card-container">
+          <div className="small-card-container">
+            {CardsElement}
+          </div>
         </div>
-      </div>
+      } 
       <Footer />
     </div>
   )
