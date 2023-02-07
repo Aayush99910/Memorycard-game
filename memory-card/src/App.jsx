@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Header from "./components/Header/Header.jsx";
 import Message from "./components/Message/Message.jsx";
 import Card from "./components/Card/Card.jsx";
@@ -29,7 +30,7 @@ import Smoker from "./assets/Smoker.png";
 
 
 export default function App() {
-  const cards = [
+  const [cards, setCards] = useState([
     {
         id: 0,
         imageURL: "https://freepngimg.com/thumb/one_piece/90550-monkey-nami-top-character-fictional-nico-luffy.png",
@@ -165,13 +166,36 @@ export default function App() {
       imageURL: Smoker,
       text: "Smoker"
     }
-  ];
+  ]);
+
+  const randomiseArray = () => {
+      let randomisedArray = [];
+      let arrLength = cards.length;
+      for (let i = 0; i < arrLength; i++) {
+          let randomNumber = getRandomNumber(arrLength);
+          while(randomisedArray.includes(cards[randomNumber])) {
+            randomNumber = getRandomNumber(arrLength);
+          }
+            
+          randomisedArray.push(cards[randomNumber])
+      }    
+      
+      setCards([...randomisedArray]);
+  }
+
+  const getRandomNumber = (max) => {
+      let number = Math.floor(Math.random() * max);
+      return number
+  }
+
 
   const CardsElement = cards.map(eachCard => {
     return (
-      <Card key={eachCard.id} data={eachCard}/>
+      <Card randomise={randomiseArray} key={eachCard.id} data={eachCard}/>
     )
   })
+
+
 
   return (
     <div>
