@@ -4,7 +4,7 @@ import "./Card.css"
 
 export default function Card(props) {
     return (
-        <div className="card-container" onClick={props.randomise}>
+        <div className="card-container" onClick={props.putClickedCards} id={props.id}>
             <div className="image-container">
                 <img src={props.data.imageURL} />
             </div>
