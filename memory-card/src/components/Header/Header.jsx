@@ -3,7 +3,7 @@ import "./Header.css";
 
 import OneLogo from "../../assets/One Piece Logo.png"
 
-export default function Header() {
+export default function Header(props) {
     return (
         <div className="header-container">
             <div className="logo-container">
@@ -13,7 +13,7 @@ export default function Header() {
                 MEMORY GAME
             </div>
             <div className="score-container">
-                <div>Score: 0</div>
+                <div>Score: {props.score}</div>
                 <div>Best Score: 0</div>
             </div>
         </div>
