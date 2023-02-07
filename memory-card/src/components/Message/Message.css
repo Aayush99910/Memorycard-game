@@ -1,5 +1,23 @@
 .message-container {
-    padding: 15px;
     font-family: 'Exo 2', sans-serif;
     font-size: 18px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.reset-button {
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+    background-color: #147efb;
+    color: #E8E8E8;
+    transition: 0.30s;
+}
+
+.reset-button:hover {
+    cursor: pointer;
+    background-color: #0d58ad;
 }

@@ -1,10 +1,15 @@
 import React from "react";
 import "./Message.css";
 
-export default function Message() {
+export default function Message(props) {
     return (
         <div className="message-container">
-            Don't click the same picture twice.
+            {props.message}
+            {
+                props.gameOver ? 
+                <button className="reset-button" onClick={props.changeGameOver}>Restart game</button> :
+                <div></div>
+            }
         </div>
     )
 }
