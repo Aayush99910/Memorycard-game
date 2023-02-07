@@ -7,6 +7,6 @@
 
 .small-card-container {
     display: flex;
-    gap: 25px;
+    gap: 45px;
     flex-wrap: wrap;
 }
