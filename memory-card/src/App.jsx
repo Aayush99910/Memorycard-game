@@ -4,6 +4,7 @@ import Header from "./components/Header/Header.jsx";
 import Message from "./components/Message/Message.jsx";
 import Card from "./components/Card/Card.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import { nanoid } from 'nanoid'
 import "./App.css";
 
 // Images
@@ -33,143 +34,146 @@ import Smoker from "./assets/Smoker.png";
 export default function App() {
   const [cards, setCards] = useState([
     {
-        id: 0,
+        id: nanoid(),
         imageURL: "https://freepngimg.com/thumb/one_piece/90550-monkey-nami-top-character-fictional-nico-luffy.png",
         text: "Robin",
     },
     {
-        id: 1,
+        id: nanoid(),
         imageURL: "https://freepngimg.com/thumb/one_piece/23213-7-one-piece-zoro-photos.png",
         text: "Zoro",
     },
     {
-        id: 2,
+        id: nanoid(),
         imageURL: "https://freepngimg.com/thumb/one_piece/23092-1-one-piece-sanji-clipart.png",
         text: "Sanji",
     },
     {
-        id: 4,
+        id: nanoid(),
         imageURL: "https://freepngimg.com/thumb/one_piece/86562-usopp-warriors-one-joint-costume-piece-pirate.png",
         text: "Ussop",
     },
     {
-      id: 6,
+      id: nanoid(),
       imageURL: "https://freepngimg.com/thumb/one_piece/23231-5-one-piece-chibi-image.png",
       text: "Luffy"
     },
     {
-      id: 7,
+      id: nanoid(),
       imageURL: "https://freepngimg.com/thumb/one_piece/23369-9-one-piece-chibi-transparent-background.png",
       text: "Chopper"
     },
     {
-      id: 8,
+      id: nanoid(),
       imageURL: "https://freepngimg.com/thumb/one_piece/87811-monkey-usopp-character-brook-fictional-costume-luffy.png",
       text: "Brook"
     },
     {
-      id: 10,
+      id: nanoid(),
       imageURL: Franky,
       text: "Franky"
     },
     {
-      id: 11,
+      id: nanoid(),
       imageURL: Kaido,
       text: "Kaido"
     },
     {
-      id: 123,
+      id: nanoid(),
       imageURL: Crocodile,
       text: "Crocodile"
     },
     {
-      id: 324,
+      id: nanoid(),
       imageURL: Law,
       text: "Law"
     },
     {
-      id: 2356,
+      id: nanoid(),
       imageURL: Nami,
       text: "Nami"
     },
     {
-      id: 234546,
+      id: nanoid(),
       imageURL: Buggy,
       text: "Buggy"
     },
     {
-      id: 43543,
+      id: nanoid(),
       imageURL: Arlong,
       text: "Arlong"
     },
     {
-      id: 145214,
+      id: nanoid(),
       imageURL: Blackbeard,
       text: "Blackbeard"
     },
     {
-      id: 69,
+      id: nanoid(),
       imageURL: Kid,
       text: "Kid"
     },
     {
-      id: 87,
+      id: nanoid(),
       imageURL: Sabo,
       text: "Sabo"
     },
     {
-      id: 65498,
+      id: nanoid(),
       imageURL: Caesar,
       text: "Caesar"
     },
     {
-      id: 99,
+      id: nanoid(),
       imageURL: Kiemon,
       text: "Kiemon"
     },
     {
-      id: 100,
+      id: nanoid(),
       imageURL: Ace,
       text: "Ace"
     },
     {
-      id: 300,
+      id: nanoid(),
       imageURL: BigMom,
       text: "Big Mom"
     },
     {
-      id: 500,
+      id: nanoid(),
       imageURL: Shanks,
       text: "Shanks"
     },
     {
-      id: 897,
+      id: nanoid(),
       imageURL: Jimbei,
       text: "Jimbei"
     },
     {
-      id: 249,
+      id: nanoid(),
       imageURL: WhiteBeard,
       text: "White Beard"
     },
     {
-      id: 666,
+      id: nanoid(),
       imageURL: Garp,
       text: "Garp"
     },
     {
-      id: 10000,
+      id: nanoid(),
       imageURL: Dadan,
       text: "Dadan"
     },
     {
-      id: 25316,
+      id: nanoid(),
       imageURL: Smoker,
       text: "Smoker"
     }
   ]);
 
   const [clickedCardsArray, setClickedCardsArray] = useState([]); // array for the clicked cards
+  const [gameOver, setGameOver] = useState(false); // using state to know if the game is over or not
+  const [score, setScore] = useState(0);
+  const [message, setMessage] = useState(`Don't click the same picture twice.`);
 
   // RandomiseArray. It is triggered whenever a card is clicked and all this function 
   // does is that it randomises the array. At last it sets the new array as the cards.
@@ -198,31 +202,54 @@ export default function App() {
   // and at the end it randomises the array.
   const putClickedCardsIntoNewArray = (e) => {
     const id = e.target.parentElement.parentElement.id;
-    let newCardsArray = clickedCardsArray;
-
-    cards.map(eachCard => {
-      if (eachCard.id == id) {
-        newCardsArray.push(eachCard);
+    clickedCardsArray.map(eachClickedCard => {
+      if (eachClickedCard.id == id) {
+        setClickedCardsArray([]);
+        setGameOver(true);
       }
     })
 
-    setClickedCardsArray([...newCardsArray]);
-    randomiseArray();
+
+    if (!gameOver) {
+      setScore(prevScore => {
+        return prevScore + 1;
+      })
+      let newCardsArray = clickedCardsArray;
+
+      cards.map(eachCard => {
+        if (eachCard.id == id) {
+          newCardsArray.push(eachCard);
+        }
+      })
+
+      setClickedCardsArray([...newCardsArray]);
+      randomiseArray();
+    }
+  }
+
+  const changeGameOver = () => {
+    setGameOver(false);
+    setScore(0);
   }
 
   // cardElement
   const CardsElement = cards.map(eachCard => {
     return (
-      <Card putClickedCards={putClickedCardsIntoNewArray} key={eachCard.id} id={eachCard.id} data={eachCard}/>
+      <Card 
+        putClickedCards={putClickedCardsIntoNewArray} 
+        key={eachCard.id} 
+        id={eachCard.id} 
+        data={eachCard}
+        />
     )
   })
 
-
+  
   // returning the JSX
   return (
     <div>
-      <Header />
-      <Message />
+      <Header score={score} />
+      <Message message={message} gameOver={gameOver} changeGameOver={changeGameOver}/>
       <div className="big-card-container">
         <div className="small-card-container">
           {CardsElement}
