@@ -6,7 +6,7 @@ import Card from "./components/Card/Card.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 
-// images
+// Images
 import Crocodile from "./assets/Crocodile.png";
 import Franky from "./assets/Franky.png";
 import Kaido from "./assets/Kaido.png";
@@ -29,6 +29,7 @@ import Dadan from "./assets/Dadan.png";
 import Smoker from "./assets/Smoker.png";
 
 
+// App function
 export default function App() {
   const [cards, setCards] = useState([
     {
@@ -168,35 +169,56 @@ export default function App() {
     }
   ]);
 
+  const [clickedCardsArray, setClickedCardsArray] = useState([]); // array for the clicked cards
+
+  // RandomiseArray. It is triggered whenever a card is clicked and all this function 
+  // does is that it randomises the array. At last it sets the new array as the cards.
   const randomiseArray = () => {
-      let randomisedArray = [];
-      let arrLength = cards.length;
-      for (let i = 0; i < arrLength; i++) {
-          let randomNumber = getRandomNumber(arrLength);
-          while(randomisedArray.includes(cards[randomNumber])) {
-            randomNumber = getRandomNumber(arrLength);
-          }
+    let randomisedArray = [];
+    let arrLength = cards.length;
+    for (let i = 0; i < arrLength; i++) {
+      let randomNumber = getRandomNumber(arrLength);
+      while(randomisedArray.includes(cards[randomNumber])) {
+        randomNumber = getRandomNumber(arrLength);
+      }
             
-          randomisedArray.push(cards[randomNumber])
-      }    
+      randomisedArray.push(cards[randomNumber])
+    }    
       
-      setCards([...randomisedArray]);
+    setCards([...randomisedArray]);
   }
 
+  // returns a randomNumber from 0 to max. (max is a variable)
   const getRandomNumber = (max) => {
-      let number = Math.floor(Math.random() * max);
-      return number
+    let number = Math.floor(Math.random() * max);
+    return number;
   }
 
+  // This function puts the clicked cards into a an array called clickedCardsArray 
+  // and at the end it randomises the array.
+  const putClickedCardsIntoNewArray = (e) => {
+    const id = e.target.parentElement.parentElement.id;
+    let newCardsArray = clickedCardsArray;
 
+    cards.map(eachCard => {
+      if (eachCard.id == id) {
+        newCardsArray.push(eachCard);
+      }
+    })
+
+    setClickedCardsArray([...newCardsArray]);
+    randomiseArray();
+  }
+
+  // cardElement
   const CardsElement = cards.map(eachCard => {
     return (
-      <Card randomise={randomiseArray} key={eachCard.id} data={eachCard}/>
+      <Card putClickedCards={putClickedCardsIntoNewArray} key={eachCard.id} id={eachCard.id} data={eachCard}/>
     )
   })
 
 
-
+  // returning the JSX
   return (
     <div>
       <Header />
