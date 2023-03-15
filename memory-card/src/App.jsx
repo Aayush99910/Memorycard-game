@@ -212,6 +212,11 @@ export default function App() {
 
 
     if (!gameOver) {
+      if (score == 27) {
+        setGameOver(true);
+        setMessage("You have won the game. Congrats!!");
+        return;
+      }
       setScore(prevScore => {
         return prevScore + 1;
       })
